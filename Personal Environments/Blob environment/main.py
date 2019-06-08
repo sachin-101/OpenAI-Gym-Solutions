@@ -24,7 +24,7 @@ directory = 'policy3.pickle'
 agent.set_policy(directory)
 
 #testing the agent
-for i in range(10):
+for i in range(10):  #running for 10 times
     state = env.reset()
     total_reward = 0
     while True:

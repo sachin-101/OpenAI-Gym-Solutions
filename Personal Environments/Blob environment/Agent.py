@@ -1,7 +1,6 @@
 from collections import defaultdict
 import sys
 import numpy as np 
-import pandas as pd
 import pickle
 
 class Agent:
@@ -94,9 +93,10 @@ class Agent:
         self.policy = defaultdict(lambda:0, policy_new)  #saved as defaultdict
         print('policy Loaded')        
 
-    def save(self):
+    def save(self,i):
         try:
-            data = pd.DataFrame(self.Q)
-            data.to_csv('Q.csv')
+            policy = dict(agent.policy)
+            with open(f'policy{i}.pickle','wb') as f:
+                pickle.dump(policy, f)
         except :
-            pass
+            print('not saved')

@@ -12,6 +12,7 @@ BLUE = (0,0,255)
 BLACK = (0,0,0)
 RED = (255,0,0)
 GREEN = (0,255,0)
+TEXT_COLOR = (0,0,220)
 
 class Grid_Env():
 
@@ -50,7 +51,7 @@ class Grid_Env():
 
 #-----------------------------------------------Render the enviroment-----------------------------------------------#    
 
-    def render(self):
+    def render(self, i_episode=-1):
         '''
             rendering the environment using pygame display
         '''
@@ -65,9 +66,12 @@ class Grid_Env():
         for pos in self.ENEMY_POSITIONS:
         	pygame.draw.rect(self.DISPLAY, RED, [pos[0]*self.ENEMY_WIDTH, pos[1]*self.ENEMY_HEIGHT, self.ENEMY_WIDTH, self.ENEMY_HEIGHT])
 
+        if i_episode>=0:
+            self.display_episode(i_episode)
+
         #updating the display
         pygame.display.update()
-        self.CLOCK.tick(20)
+        self.CLOCK.tick(50)
 
 #--------------------------------------Agent takes step and the environment changes------------------------------------#
 
@@ -125,7 +129,14 @@ class Grid_Env():
 
         return self.STATE, reward, done
         
-         
+
+#----------------------------Helper function to display episode-------------------------#
+
+    def display_episode(self,epsiode):
+        font = pygame.font.SysFont(None, 25)
+        text = font.render("Episode: "+str(epsiode), True, TEXT_COLOR)
+        self.DISPLAY.blit(text,(1,1))		
+
 #---- A helpful class GAME_MATRIX (Abstracts the specific features of game from environment)-------------------#
 
 

@@ -1,8 +1,10 @@
 ### Grid Environment
 
 Run the main.py file.
+- You can train the agent.
+- Or load the pre-trained policy 
 
-Watch the blob run make his way through grid to reach the goal.
+And watch the blob make his way through grid to reach the goal.
 
 ####Requirements
 

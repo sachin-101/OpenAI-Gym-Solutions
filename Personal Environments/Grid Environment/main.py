@@ -8,9 +8,8 @@ import random
 display_width, display_height = 200, 200
 
 pygame.init()
-
+pygame.display.set_caption('Grid environment')
 gameDisplay = pygame.display.set_mode((display_width,display_height))
-pygame.display.set_caption('Blob Game')
 clock = pygame.time.Clock()
 
 
@@ -21,14 +20,19 @@ env = Grid_Env(gameDisplay, clock, game_matrix)
 
 #initialising agent
 agent = Agent(env = env,
-              alpha = 0.1)
+              alpha = 0.5)
 
+#uncomment 
 #getting agent's policy
-#can remove this to train a fresh agent
-directory = 'policy_default_env.pickle'
-agent.set_policy(directory)
+#directory = 'policy_default_env.pickle'
+#agent.set_policy(directory)
+
+#training the agent via interaction
+agent.interact(num_episodes=2000)
+
 
 #testing the agent
+pygame.display.set_caption('Test Phase')
 for i in range(10):  #running for 10 times
     state = env.reset()
     total_reward = 0

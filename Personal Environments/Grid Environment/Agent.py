@@ -58,6 +58,8 @@ class Agent:
             action_prev = self.action_from_eps_greedy_policy(state_prev, Q, epsilon, self.nA)
             #loop over SARSA
             while True:
+                #rendering the environment
+                self.env.render(i_episode)
                 state, reward, done = self.env.step(action_prev)
                 Q[state_prev][action_prev] += self.alpha*(reward + self.gamma*np.max(Q[state]) - Q[state_prev][action_prev])
                 if done:

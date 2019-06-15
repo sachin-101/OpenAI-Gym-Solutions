@@ -4,7 +4,7 @@ Run the main.py file.
 
 Watch the blob run for food.
 
-####Requirements
+#### Requirements
 
 - pygame
 - numpy

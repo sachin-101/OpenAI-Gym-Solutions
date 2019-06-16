@@ -95,10 +95,11 @@ class Agent:
         self.policy = defaultdict(lambda:0, policy_new)  #saved as defaultdict
         print('policy Loaded')        
 
+    '''
     def save(self,i):
         try:
             policy = dict(agent.policy)
             with open(f'policy{i}.pickle','wb') as f:
                 pickle.dump(policy, f)
         except :
-            print('not saved')
+            print('not saved')'''
